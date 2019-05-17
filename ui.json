@@ -1,0 +1,12 @@
+{
+  "defaultEntryPoint": "index.html",
+  "namespace": "CeevoPayment",
+  "menuEntries": [
+    {
+      "label": "Barzahlung",
+      "menu": "settings/orders/payment/Plugins",
+      "urlKey": "ceevopayment",
+      "entryPoint": "index.html"
+    }
+  ]
+}
