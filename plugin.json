@@ -1,6 +1,7 @@
 {
     "version"           : "1.2.2",
     "name"              : "CeevoPayment",
+    "isClosedSource"    : true,
     "marketplaceName"   : {"de":"Barzahlung","en":"ceevo payment"},
     "license"           : "AGPL-3.0",
     "pluginIcon"        : "icon_plugin_xs.png",
