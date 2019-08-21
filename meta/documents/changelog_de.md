@@ -1,6 +1,6 @@
 # Release Notes für Barzahlung
 
-## 1.3.4 (2019-03-22)
+## 1.2.2 (2019-03-22)
 
 ### Geändert
 - Der User Guide wurde aktualisiert.
