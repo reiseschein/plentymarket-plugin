@@ -1,5 +1,10 @@
 # Release Notes for PayUponPickup
 
+## 1.2.3 (2019-09-24)
+
+### Changed
+- Updated icons, plugin author and description.
+
 ## 1.2.2 (2019-03-22)
 
 ### Changed

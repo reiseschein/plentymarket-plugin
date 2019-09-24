@@ -1,5 +1,10 @@
 # Release Notes für Barzahlung
 
+## 1.2.3 (2019-09-24)
+
+### Geändert
+- Aktualisierte Symbole, Autor des Plugins und Beschreibung.
+
 ## 1.2.2 (2019-03-22)
 
 ### Geändert
