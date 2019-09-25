@@ -1,108 +1,54 @@
-# plentymarkets Payment – Barzahlung
+# Ceevo - Ihr one-stop-shop für eCommerce-Payments
 
-Mit diesem Plugin binden Sie die Zahlungsart **Barzahlung** in Ihren Webshop ein.
+Ceevo – Ihr One-Stop-Shop für eCommerce-Payments
 
-## Zahlungsart einrichten
+Stellen Sie sich mit Ceevo für Ihr E-Commerce Business optimal auf. Keine Grundgebühr für STARTER, alle wichtigen Zahlarten zu Top-Konditionen für EXPERTEN oder die EU-Payment-Flatrate mit nur 0,7% Disagio ohne zusätzliche Transaktionskosten für die Kreditkarte – Ceevo hat für jeden Shop die passende Lösung!
 
-Bevor die Zahlungsart in Ihrem Webshop verfügbar ist, müssen Sie zuerst einige Einstellungen in Ihrem plentymarkets Backend vornehmen.
+Für Europa und Asien (z.B. CUP, JCB, Alipay und WeChatpay) liefert Ceevo alle Zahlarten aus einer Hand. Mit der Acquiring Bank im eigenen Haus und eigenem Gateway bietet Ceevo zumeist marktbeste Konditionen. Barrierefreie Einbindung von Warenwirtschafts- und allen Shopsystemen, deutschsprachiger Kundenservice und rasches Onboarding runden das Leistungspaket ab.
 
-Zuerst aktivieren Sie die Zahlungsart einmalig im Menü **System » Systemeinstellungen » Aufträge » Zahlung » Zahlungsarten**. Weitere Informationen dazu finden Sie auf der Handbuchseite <strong><a href="https://knowledge.plentymarkets.com/payment/zahlungsarten-verwalten#20" target="_blank">Zahlungsarten verwalten</a></strong>.
+Ceevo, mit Standorten in Deutschland, UK, Malta und Liechtenstein, wurde 2010 gegründet und gehört zu den am schnellsten wachsenden Payment-Anbietern in Europa.
 
-Stellen Sie zudem sicher, dass die Zahlungsart unter dem Punkt **Erlaubte Zahlungsarten** in den <strong><a href="https://knowledge.plentymarkets.com/crm/kontakte-verwalten#15" target="_blank">Kundenklassen</a></strong> vorhanden ist und nicht im Bereich **Gesperrte Zahlungsarten** in den <strong><a href="https://knowledge.plentymarkets.com/auftragsabwicklung/fulfillment/versand-vorbereiten#1000" target="_blank">Versandprofilen</a></strong> aufgeführt ist.
+Mit dem plentymarkets plugin können Sie folgende Zahlarten nutzen: Kreditkarte, Debitkarte, Sofortüberweisung, Giropay, iDeal, PayPal
 
-##### Zahlungsart einrichten:
+## Zugang anlegen
 
-1. Öffnen Sie das Menü **System&nbsp;» Systemeinstellungen » Aufträge&nbsp;» Zahlung » Plugins » Barzahlung**.
-2. Wählen Sie einen Mandanten.
-3. Nehmen Sie die Einstellungen vor. Beachten Sie dazu die Erläuterungen in Tabelle 1.
-4. **Speichern** Sie die Einstellungen.
+Sie müssen [Kunde werden](http://www.ceevo.com) bevor Sie die Zahlverfahren in plentymarkets nutzen können. Sie erhalten dann Informationen sowie Zugangsdaten, die Sie für die Einrichtung in plentymarkets benötigen.
 
-<table>
-<caption>Tab. 1: Einstellungen für die Zahlungsart vornehmen</caption>
-	<thead>
-		<th>
-			Einstellung
-		</th>
-		<th>
-			Erläuterung
-		</th>
-	</thead>
-	<tbody>
-        <tr>
-			<td>
-				<b>Sprache</b>
-			</td>
-			<td>
-				Sprache wählen. Die übrigen Einstellungen, z.B. Name, Infoseite etc., werden sprachabhängig gespeichert.
-			</td>
-		</tr>
-        <tr>
-			<td>
-				<b>Name</b>
-			</td>
-			<td>
-				Die Bezeichnung, die in der Übersicht der Zahlungsarten in der Kaufabwicklung für diese Zahlungsart angezeigt wird.
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<b>Infoseite</b>
-			</td>
-			<td>Wählen, ob als <a href="https://knowledge.plentymarkets.com/payment/bankdaten-verwalten#40"><strong>Information zur Zahlungsart</strong></a> eine Kategorieseite oder eine externe Webseite angezeigt wird.
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<b>Infoseite intern/<br />Infoseite extern</b>
-			</td>
-			<td>In der Beschreibung der Zahlungsart wird ein Link zu den <strong>Details</strong> der Zahlungsart angezeigt.<br /><strong>Infoseite intern:</strong> Über Eingabe der Kategorie-ID oder das Auswahlfeld eine Kategorieseite vom Typ <strong>Content</strong> wählen, die weitere Informationen zur Zahlungsart bietet.<br /><strong>Infoseite extern:</strong> Die URL einer externen Informationsseite eingeben. <strong><i>Wichtig:</i></strong> Entweder http:// oder https:// verwenden.<br />Wird keine Eingabe vorgenommen, wird kein Link angezeigt.
-			</td>
-        <tr>
-			<td>
-				<b>Logo</b>
-			</td>
-			<td>
-			Wählen, ob das im Plugin hinterlegte <strong>Standard-Logo</strong> der Zahlungsart oder ein eigenes Logo angezeigt wird.
-			</td>
-		</tr>
-        <tr>
-			<td>
-				<b>Logo-URL</b>
-			</td>
-			<td>
-			Eine https-URL, die zum Logo-Bild führt. Gültige Dateiformate sind .gif, .jpg oder .png. Die Maximalgröße beträgt 190 Pixel in der Breite und 60 Pixel in der Höhe.
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<b>Beschreibung</b>
-			</td>
-			<td>
-				Eine Beschreibung der Zahlungsart eingeben, die dem Kunden in der Kaufabwicklung angezeigt wird. Der Text wird nach 150 Zeichen mit Ellipse abgeschnitten.
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<b>Lieferländer</b>
-			</td>
-			<td>
-				Nur für die hier eingestellten Lieferländer ist diese Zahlungsart freigegeben.
-			</td>
-		</tr>
-	</tbody>
-</table>
+## Einrichtung in plentymarkets
 
-## Logo der Zahlungsart auf der Startseite anzeigen
+Bevor Sie die Funktionen des Plugins nutzen können, müssen Sie zuerst Ihr Ceevo-Konto mit Ihrem plentymarkets System verbinden.
 
-Das Template-Plugin **Ceres** bietet Ihnen auf der Startseite einen Template-Container, in dem Sie die Logos Ihrer Zahlungsart anzeigen können. Gehen Sie wie im Folgenden beschrieben vor, um das Logo der Zahlungsart zu verknüpfen.
+##### Ceevo Konto hinzufügen:
+1. Öffnen Sie das Menü **Plugins&nbsp;» ceevo payment&nbsp;» Konfiguration**. 
+2. Tragen Sie Ihre Zugangsdaten ein und wählen Sie den Modus TEST oder LIVE. Für TEST sind bereits alle Daten vorausgefüllt. 
+3. Wechseln Sie den Tab um die einzelnen Zahlverfahren zu aktivieren, die Beschreibung und die Kanal ID einzutragen.
+4. Klicken Sie auf **Save**.
+5. Um Fehlermeldungen anzuzeigen, verknüpfen Sie bitte die Template Container weiter unten.
+6. Fertig
 
-##### Logo mit Template-Container verknüpfen:
+##### Ceevo Klassen aktivieren:
+1. Klick auf System oben in der Navi
+2. Klick auf CRM links in der Navi
+3. Klick auf Klassen/Classes in der Navi links
+4. Klick auf das kleine + oben links
+5. Wählen Sie alle Klassen mit dem Namen Mapa oder Ceevo unter Permitted payment methods aus.
+6. Klick auf Speichern links unten.
 
-1. Öffnen Sie das Menü **CMS » Container-Verknüpfungen**.
-2. Wählen Sie den Bereich **Pay upon pickup icon**.
-3. Aktivieren Sie den Container **Homepage: Payment method container**.
-4. **Speichern** Sie die Einstellungen.<br />→ Das Logo der Zahlungsart wird auf der Startseite des Webshops angezeigt.
+## Template-Container verknüpfen
 
-## Lizenz
+Sie müssen die Fehler Box in ihren Shop einbinden. 
+Hierfür sind in den Templates in plentymarkets an relevanten Stellen Container hinterlegt, die zur Individualisierung mit Inhalt gefüllt werden.
 
-Das gesamte Projekt unterliegt der GNU AFFERO GENERAL PUBLIC LICENSE – weitere Informationen finden Sie in der [LICENSE.md](https://github.com/plentymarkets/plugin-payment-payuponpickup/blob/master/LICENSE.md).
+##### Fehler Box verknüpfen:
+
+1. Klicken Sie auf **Start&nbsp;» Plugins**. 
+2. Klicken Sie auf den Tab **Content** . 
+3. Wählen Sie den Bereich Error Messages (Ceevo). 
+4. Wählen Sie einen Container der die Fehler beinhalten soll. Ideal dafür ist Checkout: Before payment method.
+
+##### Testdaten:
+
+- Test credentials sind bereit vorausgefüllt.
+- Zum Testen bitte folgende Testdaten verwenden:
+- Kredit- oder Debitkarten: Nummer: 4111 1111 1111 1111 CVV; 111 Gültig bis: in Zukunft
+- Buchungen über 100 € erzeugen einen Fehler.
