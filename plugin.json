@@ -1,6 +1,6 @@
 {
     "name": "Ceevo",
-    "marketplaceName": {"de":"Ceevo Zahlungs Prüfung","en":"Ceevo Payment test"},
+    "marketplaceName": {"de":"Ceevo Zahlungs","en":"Ceevo Payment"},
     "namespace": "Ceevo",
     "type": "payment",  
     "version": "0.1",
