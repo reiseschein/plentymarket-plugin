@@ -4,7 +4,7 @@
         "Config.SettingsTab": {
             "label": "Config.SettingsTab",
             "formFields": {
-                "name": {
+                "name_cv": {
                     "type": "inputText",
                     "required": false,
                     "label": "Config.nameLabel",
@@ -12,76 +12,50 @@
                         "defaultValue": "Ceevo Payment"
                     }
                 },
-                "infoPage.type": {
-                    "type": "selectBox",
-                    "required": false,
-                    "label": "Config.infoPageTypeLabel",
-                    "options": {
-                        "defaultValue": "0",
-                        "selectBoxValues": [
-                            {
-                                "value": "0",
-                                "caption": "Config.infoPageTypePossibleValue0"
-                            },
-                            {
-                                "value": "1",
-                                "caption": "Config.infoPageTypePossibleValue1"
-                            },
-                            {
-                                "value": "2",
-                                "caption": "Config.infoPageTypePossibleValue2"
-                            }
-                        ]
+                "desc_cv":{
+                    "type":"inputText",
+                    "required":false,
+                    "label":"Config.descCvLabel",
+                    "options":{
+                       "defaultValue":"Ceevo Payment test"
                     }
-                },
-                "infoPage.intern": {
-                    "type": "categoryPicker",
-                    "required": false,
-                    "label": "Config.infoPageInternLabel",
-                    "options": {}
-                },
-                "infoPage.extern": {
-                    "type": "inputText",
-                    "required": false,
-                    "label": "Config.infoPageExternLabel",
-                    "options": {
-                        "defaultValue": ""
+                 },
+                "environment":{
+                    "type":"selectBox",
+                    "required":false,
+                    "label":"Config.environmentLabel",
+                    "options":{
+                       "defaultValue":"TEST",
+                       "selectBoxValues":[
+                          {
+                             "value":"LIVE",
+                             "caption":"Config.environmentPossibleValueLIVE"
+                          },
+                          {
+                             "value":"TEST",
+                             "caption":"Config.environmentPossibleValueTEST"
+                          }
+                       ]
                     }
-                },
-                "logo": {
-                    "type": "selectBox",
-                    "required": false,
-                    "label": "Config.logoLabel",
-                    "options": {
-                        "defaultValue": "0",
-                        "selectBoxValues": [
-                            {
-                                "value": "0",
-                                "caption": "Config.logoPossibleValue0"
-                            },
-                            {
-                                "value": "1",
-                                "caption": "Config.logoPossibleValue1"
-                            }
-                        ]
+                 },
+                 "status_cv":{
+                    "type":"selectBox",
+                    "required":false,
+                    "label":"Config.statusCvLabel",
+                    "options":{
+                       "defaultValue":"0",
+                       "selectBoxValues":[
+                          {
+                             "value":"0",
+                             "caption":"Config.statusCvPossibleValue0"
+                          },
+                          {
+                             "value":"1",
+                             "caption":"Config.statusCvPossibleValue1"
+                          }
+                       ]
                     }
-                },
-                "logo.url": {
-                    "type": "inputText",
-                    "required": false,
-                    "label": "Config.logoUrlLabel",
-                    "options": {
-                        "defaultValue": ""
-                    }
-                },
-                "shippingProfileId": {
-                    "type": "inputText",
-                    "required": false,
-                    "label": "Config.shippingProfileIdLabel",
-                    "options": {
-                        "defaultValue": ""
-                    }
-                },
+                 },
                 "clientId": {
                     "type": "inputText",
                     "required": false,
