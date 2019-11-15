@@ -17,7 +17,7 @@
                     "required":false,
                     "label":"Config.descCvLabel",
                     "options":{
-                       "defaultValue":"Ceevo Payment test"
+                       "defaultValue":"Ceevo Payment"
                     }
                  },
                 "environment":{
