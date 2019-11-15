@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>      
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+  .ceevo__payment-wedgit {
+    padding-top: 0px !important;
+  }
+</style>
+</head>
+<body>
+<form id="checkout_form" action="{{cardTokenUrl}}" method="POST">
+</form>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.9.1/jquery.min.js"></script>
+<script src="{{sdkUrl}}/ceevo.js"></script>
+<script type="text/javascript" language="JavaScript">
+  $(document).ready(function(){ 
+    var price = "{{price}}";
+    var currency = "{{currency}}";
+    var apiKey = "{{apiKey}}";
+    var formId = "form#checkout_form";
+    var config = { envMode: "{{mode}}" };
+    var ceevoPayment = new CeevoPayment(apiKey, formId, config);      
+    var widget = ceevoPayment.widget();
+    widget.setPrice(price);
+    widget.setCurrency(currency);
+    widget.open();
+  });
+</script>
+</body>
+</html>
