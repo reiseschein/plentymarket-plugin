@@ -56,6 +56,24 @@
                        ]
                     }
                  },
+                 "3dsecure":{
+                    "type":"selectBox",
+                    "required":false,
+                    "label":"Config.3dsecureLabel",
+                    "options":{
+                       "defaultValue":"Yes",
+                       "selectBoxValues":[
+                          {
+                             "value":"Yes",
+                             "caption":"Config.3dSecurePossibleValueTrue"
+                          },
+                          {
+                             "value":"No",
+                             "caption":"Config.3dSecurePossibleValueFalse"
+                          }
+                       ]
+                    }
+                 },
                 "clientId": {
                     "type": "inputText",
                     "required": false,
