@@ -28,13 +28,6 @@ class PayCore
   public $live_sdk_url = 'https://sdk.ceevo.com';
   public $test_sdk_url = 'https://sdk-beta.ceevo.com';
 
-  public $availablePayments = array('CV');
-  public $pageURL = '';
-  public $actualPaymethod = 'CV';
-
-  public $lastError = '';
-  public $lastErrorCode = '';
-
   public $access_token = '';
 
   function createCustomer($param){
