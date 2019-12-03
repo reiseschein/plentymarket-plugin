@@ -57,6 +57,8 @@ class PaymentHelper
      */
     private $statusMap = array();
 
+    const PAYMENTKEY_CEEVO = 'CV';
+
     /**
      * PaymentHelper constructor.
      *
