@@ -3,7 +3,7 @@
     "marketplaceName": {"de":"Ceevo Payment","en":"Ceevo Payment"},
     "namespace": "Ceevo",
     "type": "payment",  
-    "version": "1.0.5",
+    "version": "1.0.6",
     "license": "Copyright by Ceevo AG",
     "isClosedSource": true,
     "pluginIcon": "icon_plugin_xs.png",
