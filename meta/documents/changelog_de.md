@@ -1,3 +1,8 @@
+# Release 1.1.1 03/12/2019
+
+#### Änderungen
+
+- aktualisierte Bedienungsanleitung
 
 # Veröffentlichung 1.1.0
 

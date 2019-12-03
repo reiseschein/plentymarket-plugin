@@ -1,11 +1,10 @@
-# Ceevo - Ihr one-stop-shop für eCommerce-Payments
+# Ceevo - Nehmen Sie Zahlungen weltweit, zuverlässig und kostengünstig entgegen.
 
-Ceevo bietet Zahlungsabwicklung für E-Commerce-Shops.
-Als Mitglied der Net1 Group akzeptieren und verarbeiten wir alle gängigen Zahlungsmethoden für Ihren E-Commerce-Shop mit unserer eigenen Acquiring-Lösung.
+Lassen Sie Ihr Geld fließen und Ihre Verkäufe wachsen.
+ 
+Das Geschäft ist nicht einfach, und um erfolgreich zu sein, müssen Sie sich darauf konzentrieren, den Anforderungen der Kunden immer einen Schritt voraus zu sein. Wir kümmern uns mühelos um die sich ständig ändernden Zahlungsmethoden, damit Ihr Unternehmen weiterhin mit Geld versorgt wird.
 
-Wir kombinieren die Kernkompetenzen eines Acquirers mit denen eines Zahlungsdienstleisters und den vorläufigen Finanzierungsmöglichkeiten einer Bank, um Ihr Working Capital zu optimieren.
-
-Mit dem Plugin plentymarkets können Sie folgende Zahlungsmethoden nutzen: Kreditkarte, SEPA, Sofortüberweisung, iDeal
+Mit dem Plugin von plentymarkets können Sie verschiedene Zahlungsmethoden verwenden. Weitere Informationen finden Sie unter https://www.ceevo.com/all-pricing/
 
 ## Zugang anlegen
 
@@ -17,7 +16,7 @@ Bevor Sie die Funktionen des Plugins nutzen können, müssen Sie zuerst Ihr Ceev
 
 ##### Ceevo Konto hinzufügen:
 1. Öffnen Sie das Menü **Plugins&nbsp;» Ceevo&nbsp;» Konfiguration**. 
-2. Geben Sie Ihre Anmeldeinformationen ein (Client ID, Client Secret, API Key), wählen Sie Mode TEST oder LIVE und dann Activate Yes.
+2. Geben Sie Ihre Anmeldeinformationen ein (Client-ID, Client-Geheimnis, API-Schlüssel), wählen Sie den Modus "TEST" und anschließend "Ja", um ihn zu aktivieren.
 3. Klicken Sie auf **Save**.
 4. Fertig
 
@@ -32,5 +31,6 @@ Bevor Sie die Funktionen des Plugins nutzen können, müssen Sie zuerst Ihr Ceev
 ##### Testdaten:
 
 - Test credentials sind bereit vorausgefüllt.
-- Zum Testen bitte folgende Testdaten verwenden:
-- Kreditkarten: Nummer: 4200000000000000 CVV; 111 Gültig bis: in Zukunft
+- Zum Testen verwenden Sie bitte folgende Testkarte:
+- Kreditkarte: Nummer: 4200000000000000 CVV; 111 Gültig bis: in Zukunft
+- Die aktuellste Dokumentation finden Sie unter https://docs.ceevo.com/#plentymarket

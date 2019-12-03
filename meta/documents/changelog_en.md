@@ -1,3 +1,8 @@
+# Release 1.1.1 03/12/2019
+
+#### Changes
+
+- updated user guide
 
 # Release 1.1.0
 
