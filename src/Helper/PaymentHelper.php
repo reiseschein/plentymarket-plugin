@@ -108,7 +108,7 @@ class PaymentHelper
      * @param string $paymethod Paymethod Shortcut i.e. CC
      * @return string|int
      */
-    public function getPaymentMethod($paymethod)
+    public function getPaymentMethod($paymentKey)
     {
         $paymentMethods = $this->paymentMethodRepository->allForPlugin('plentyCeevo');
  
@@ -116,7 +116,7 @@ class PaymentHelper
         {
             foreach($paymentMethods as $paymentMethod)
             {
-                if($paymentMethod->paymentKey == 'CEEVO_PAYMENT')
+                if($paymentMethod->paymentKey == $paymentKey)
                 {
                     return $paymentMethod->id;
                 }
