@@ -125,6 +125,22 @@ class PaymentHelper
  
         return 'no_paymentmethod_found';
     }
+
+    public function getPaymentKeyByMop($mop)
+    {
+        $paymentMethods = $this->paymentMethodRepository->allForPlugin('plentyCeevo');
+        if(!is_null($paymentMethods))
+        {
+            foreach($paymentMethods as $paymentMethod)
+            {
+                if($paymentMethod->id == $mop)
+                {
+                    return $paymentMethod->paymentKey;
+                }
+            }
+        }
+        return false;
+    }
     
     public function createPlentyPayment($data, $trxid, $uniqueid)
     {

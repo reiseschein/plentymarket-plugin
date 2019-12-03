@@ -93,6 +93,7 @@ class CeevoServiceProvider extends ServiceProvider
         $eventDispatcher->listen(GetPaymentMethodContent::class,
             function(GetPaymentMethodContent $event) use( $paymentHelper,  $basket,  $paymentService)
             {
+              if($paymentHelper->getPaymentKeyByMop($event->getMop())) {
                 $basket = $basket->load();
                 
                 //$output = 'getMop: '.$event->getMop();
@@ -121,7 +122,7 @@ class CeevoServiceProvider extends ServiceProvider
                     'this' => $this,
                     'basket' => $basket, 
                   ]);
-                
+              } 
             }
         );
         
@@ -129,6 +130,7 @@ class CeevoServiceProvider extends ServiceProvider
         $eventDispatcher->listen(ExecutePayment::class,
             function(ExecutePayment $event) use ( $paymentHelper, $paymentService)
             {
+              if($paymentHelper->getPaymentKeyByMop($event->getMop())) {
                 $selectedMopID = $paymentHelper->getPaymentMethod(PaymentHelper::PAYMENTKEY_CEEVO);
                 
                 // Execute the payment
@@ -152,9 +154,8 @@ class CeevoServiceProvider extends ServiceProvider
                 } else {
                   $event->setType('error');
                   $event->setValue('The Payment could not be executed!');
-                }
-                
-                
+                }                
+              }  
             }
         );
         
