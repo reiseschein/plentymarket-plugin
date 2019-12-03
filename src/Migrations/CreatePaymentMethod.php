@@ -28,7 +28,7 @@ class CreatePaymentMethod
 
     public function run()
     {
-        if($this->paymentHelper->getPaymentMethod('CEEVO_PAYMENT') == 'no_paymentmethod_found')
+        if($this->paymentHelper->getPaymentMethod(PaymentHelper::PAYMENTKEY_CEEVO) == 'no_paymentmethod_found')
         {
             $paymentMethodData = array( 'pluginKey'   => 'plentyCeevo',
                                         'paymentKey'  => 'CEEVO_PAYMENT',
