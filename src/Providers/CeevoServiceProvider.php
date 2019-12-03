@@ -77,7 +77,7 @@ class CeevoServiceProvider extends ServiceProvider
                             PaymentMethodContainer $payContainer,
                             EventProceduresService $eventProceduresService)
     {
-        $regName = 'ceevo::CEEVO';
+        $regName = 'plentyCeevo::CEEVO_PAYMENT';
         $className = 'Ceevo\Methods\CeevoPaymentMethodCV'; 
         // Register the payment method in the payment method container
         $payContainer->register($regName, $className, 
