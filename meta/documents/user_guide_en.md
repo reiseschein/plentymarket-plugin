@@ -19,8 +19,7 @@ Before using the full functionality of the plugin, you first have to connect you
 1. Go to **Plugins&nbsp;» Ceevo&nbsp;» Configuration**. 
 2. Enter your credentials (Client ID, Client Secret, API Key), select Mode TEST or LIVE and select Activate Yes.
 3. Click on **Save**.
-4. For error messages link the containers as described below
-5. Done
+4. Done
 
 ##### Activate Ceevo Classes:
 1. Click on System in Top Navi

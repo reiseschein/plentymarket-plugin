@@ -19,8 +19,7 @@ Bevor Sie die Funktionen des Plugins nutzen können, müssen Sie zuerst Ihr Ceev
 1. Öffnen Sie das Menü **Plugins&nbsp;» Ceevo&nbsp;» Konfiguration**. 
 2. Geben Sie Ihre Anmeldeinformationen ein (Client ID, Client Secret, API Key), wählen Sie Mode TEST oder LIVE und dann Activate Yes.
 3. Klicken Sie auf **Save**.
-4. Um Fehlermeldungen anzuzeigen, verknüpfen Sie bitte die Template Container weiter unten.
-5. Fertig
+4. Fertig
 
 ##### Ceevo Klassen aktivieren:
 1. Klick auf System oben in der Navi
