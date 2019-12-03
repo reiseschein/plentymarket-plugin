@@ -168,7 +168,7 @@ class CeevoResponseController extends Controller
     }
 
     public function redirectPage($redirection) {
-      $redirection = '../../' . $redirection; 
+      // $redirection = '../../' . $redirection; 
       return $this->twig->render('Ceevo::content.redirect', ['redirection' => $redirection]);
     }
 

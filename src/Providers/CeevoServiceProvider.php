@@ -171,61 +171,6 @@ class CeevoServiceProvider extends ServiceProvider
             }
         );
         
-        /*
-        // Listen for the event that gets the payment method content
-        $eventDispatcher->listen(GetPaymentMethodContent::class,
-            function(GetPaymentMethodContent $event) use( $paymentHelper,  $basket,  $paymentService)
-            {
-                $this->sendDbgMail('GetPaymentMethodContent called');
-                if($event->getMop() == $paymentHelper->getPaymentMethod())
-                {
-                    $basket = $basket->load();
-                    //echo '<pre>basket:'.print_r($basket, 1).'</pre>';
-                    $this->sendDbgMail($basket);
-
-                    $event->setValue($paymentService->getPaymentContent($basket));
-                    $event->setType( $paymentService->getReturnType());
-                }
-            });
-
-        // Listen for the event that executes the payment
-        $eventDispatcher->listen(ExecutePayment::class,
-            function(ExecutePayment $event) use ( $paymentHelper, $paymentService)
-            {
-                $this->sendDbgMail('ExecutePayment called');
-                if($event->getMop() == $paymentHelper->getPaymentMethod())
-                {
-                
-                    // Execute the payment
-                    $paymentData = $paymentService->executePayment();
-                    //echo '<pre>paymentData:'.print_r($paymentData, 1).'</pre>';
-                    $this->sendDbgMail($paymentData);
-                    /*
-                    // Check whether the PayPal payment has been executed successfully
-                    if($paymentService->getReturnType() != 'errorCode')
-                    {
-                        // Create a plentymarkets payment from the paypal execution params
-                        $plentyPayment = $paymentHelper->createPlentyPayment($paymentData);
-
-                        if($plentyPayment instanceof Payment)
-                        {
-                            // Assign the payment to an order in plentymarkets
-                            $paymentHelper->assignPlentyPaymentToPlentyOrder($plentyPayment, $event->getOrderId());
-
-                            $event->setType('success');
-                            $event->setValue('The Payment has been executed successfully!');
-                        }
-                    }
-                    else
-                    {
-                        $event->setType('error');
-                        $event->setValue('The PayPal-Payment could not be executed!');
-                    }
-                    */
-        /*
-                }
-            });
-    */
     }
     
 }
