@@ -12,8 +12,6 @@ use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
 use Plenty\Modules\Basket\Events\Basket\AfterBasketChanged;
 use Plenty\Modules\Basket\Events\BasketItem\AfterBasketItemAdd;
 use Plenty\Modules\Basket\Events\Basket\AfterBasketCreate;
-use Plenty\Modules\Frontend\Events\FrontendLanguageChanged;
-use Plenty\Modules\Frontend\Events\FrontendShippingCountryChanged;
 use Plenty\Plugin\Templates\Twig;
 
 use Plenty\Plugin\Events\Dispatcher;
@@ -86,9 +84,7 @@ class CeevoServiceProvider extends ServiceProvider
           [ 
             AfterBasketChanged::class, 
             AfterBasketItemAdd::class, 
-            AfterBasketCreate::class,
-            FrontendLanguageChanged::class,
-            FrontendShippingCountryChanged::class 
+            AfterBasketCreate::class
           ]
         );
 
