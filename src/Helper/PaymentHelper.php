@@ -86,22 +86,6 @@ class PaymentHelper
     }
 
     /**
-     * Create the ID of the payment method if it doesn't exist yet
-     */
-    public function createMopIfNotExists($paymethod, $payname)
-    {
-        // Check whether the ID of the Pay upon pickup payment method has been created
-        if($this->getPaymentMethod($paymethod) == 'no_paymentmethod_found')
-        {
-            $paymentMethodData = array( 'pluginKey'   => 'ceevo',
-                                        'paymentKey'  => 'CEEVO'.$paymethod,
-                                        'name'        => 'Ceevo '.$payname);
- 
-            $this->paymentMethodRepository->createPaymentMethod($paymentMethodData);
-        }
-    }
-    
-    /**
      * Load the ID of the payment method for the given plugin key
      * Return the ID for the payment method
      *
@@ -116,13 +100,13 @@ class PaymentHelper
         {
             foreach($paymentMethods as $paymentMethod)
             {
-                if($paymentMethod->paymentKey == 'CEEVO'.$paymethod)
+                if($paymentMethod->paymentKey == 'CEEVO')
                 {
                     return $paymentMethod->id;
                 }
             }
         }
- 
+
         return 'no_paymentmethod_found';
     }
 

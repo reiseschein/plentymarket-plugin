@@ -81,7 +81,7 @@ class CeevoServiceProvider extends ServiceProvider
         // Create the ID of the payment method if it doesn't exist yet
         // $paymentHelper->createMopIfNotExists(PaymentHelper::PAYMENTKEY_CEEVO, PaymentHelper::PAYMENTKEY_CEEVO_NAME);
     
-        $regName = 'ceevo::CEEVO'.PaymentHelper::PAYMENTKEY_CEEVO;
+        $regName = 'ceevo::CEEVO';
         $className = 'Ceevo\Methods\CeevoPaymentMethod'.PaymentHelper::PAYMENTKEY_CEEVO; 
         // Register the payment method in the payment method container
         $payContainer->register($regName, $className, [ AfterBasketChanged::class, AfterBasketItemAdd::class, AfterBasketCreate::class ]);
