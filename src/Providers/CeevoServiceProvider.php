@@ -77,15 +77,15 @@ class CeevoServiceProvider extends ServiceProvider
                             PaymentMethodContainer $payContainer,
                             EventProceduresService $eventProceduresService)
     {
-      foreach ($this->availablePayments AS $k => $v){
+      
         // Create the ID of the payment method if it doesn't exist yet
-        $paymentHelper->createMopIfNotExists($k, $v);
+        // $paymentHelper->createMopIfNotExists(PaymentHelper::PAYMENTKEY_CEEVO, PaymentHelper::PAYMENTKEY_CEEVO_NAME);
     
-        $regName = 'ceevo::CEEVO'.$k;
-        $className = 'Ceevo\Methods\CeevoPaymentMethod'.$k; 
+        $regName = 'ceevo::CEEVO'.PaymentHelper::PAYMENTKEY_CEEVO;
+        $className = 'Ceevo\Methods\CeevoPaymentMethod'.PaymentHelper::PAYMENTKEY_CEEVO; 
         // Register the payment method in the payment method container
         $payContainer->register($regName, $className, [ AfterBasketChanged::class, AfterBasketItemAdd::class, AfterBasketCreate::class ]);
-      }
+      
         $this->twig = $twig;
         // Listen for the event that gets the payment method content
         $eventDispatcher->listen(GetPaymentMethodContent::class,
@@ -97,13 +97,13 @@ class CeevoServiceProvider extends ServiceProvider
                 //$output = 'getMop: '.$event->getMop();
                 $selectedPaymethod = '';
                 $selectedMopID = '';
-                foreach ($this->availablePayments AS $k => $v){
-                  //$output.= 'getPaymentMethod: '.$paymentHelper->getPaymentMethod($k);
-                  if ($paymentHelper->getPaymentMethod($k) == $event->getMop()){
-                    $selectedPaymethod = $k;
-                    $selectedMopID = $paymentHelper->getPaymentMethod($k);
+                
+                  //$output.= 'getPaymentMethod: '.$paymentHelper->getPaymentMethod(PaymentHelper::PAYMENTKEY_CEEVO);
+                  if ($paymentHelper->getPaymentMethod(PaymentHelper::PAYMENTKEY_CEEVO) == $event->getMop()){
+                    $selectedPaymethod = PaymentHelper::PAYMENTKEY_CEEVO;
+                    $selectedMopID = $paymentHelper->getPaymentMethod(PaymentHelper::PAYMENTKEY_CEEVO);
                   }
-                }
+                
                 //$output.= 'basket: '.$paymentService->getPaymentContent($basket, $selectedPaymethod);
                 $this
                 ->getLogger(__CLASS__ . '_' . __METHOD__)
@@ -138,12 +138,12 @@ class CeevoServiceProvider extends ServiceProvider
               if($paymentHelper->getPaymentKeyByMop($event->getMop())) {
                 $selectedPaymethod = '';
                 $selectedMopID = '';
-                foreach ($this->availablePayments AS $k => $v){
-                  if ($paymentHelper->getPaymentMethod($k) == $event->getMop()){
-                    $selectedPaymethod = $k;
-                    $selectedMopID = $paymentHelper->getPaymentMethod($k);
+                
+                  if ($paymentHelper->getPaymentMethod(PaymentHelper::PAYMENTKEY_CEEVO) == $event->getMop()){
+                    $selectedPaymethod = PaymentHelper::PAYMENTKEY_CEEVO;
+                    $selectedMopID = $paymentHelper->getPaymentMethod(PaymentHelper::PAYMENTKEY_CEEVO);
                   }
-                }
+                
                 
                 // Execute the payment
                 $paymentRes = $paymentService->executePayment($event->getOrderId(), $selectedPaymethod, $selectedMopID);

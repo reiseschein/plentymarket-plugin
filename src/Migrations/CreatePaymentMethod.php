@@ -30,12 +30,11 @@ class CreatePaymentMethod
     {
         if($this->paymentHelper->getPaymentMethod(PaymentHelper::PAYMENTKEY_CEEVO) == 'no_paymentmethod_found')
         {
-            $paymentMethodData = array( 'pluginKey'   => 'plentyCeevo',
-                                        'paymentKey'  => 'CEEVO_PAYMENT',
-                                        'name'        => 'Ceevo Payment');                                        
+            $paymentMethodData = array( 'pluginKey'   => 'ceevo',
+                                        'paymentKey'  => 'CEEVO'.PaymentHelper::PAYMENTKEY_CEEVO,
+                                        'name'        => 'Ceevo '.PaymentHelper::PAYMENTKEY_CEEVO_NAME);                                     
             $this->paymentMethodRepositoryContract->createPaymentMethod($paymentMethodData);
-        }
-        
+        }        
     }
 }
 ?>
