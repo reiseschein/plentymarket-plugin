@@ -58,7 +58,6 @@ class PaymentHelper
     private $statusMap = array();
 
     const PAYMENTKEY_CEEVO = 'CEEVO_PAYMENT';
-
     /**
      * PaymentHelper constructor.
      *
@@ -108,15 +107,15 @@ class PaymentHelper
      * @param string $paymethod Paymethod Shortcut i.e. CC
      * @return string|int
      */
-    public function getPaymentMethod($paymentKey)
+    public function getPaymentMethod($paymethod)
     {
-        $paymentMethods = $this->paymentMethodRepository->allForPlugin('plentyCeevo');
+        $paymentMethods = $this->paymentMethodRepository->allForPlugin('ceevo');
  
         if( !is_null($paymentMethods) )
         {
             foreach($paymentMethods as $paymentMethod)
             {
-                if($paymentMethod->paymentKey == $paymentKey)
+                if($paymentMethod->paymentKey == 'CEEVO'.$paymethod)
                 {
                     return $paymentMethod->id;
                 }
@@ -128,7 +127,7 @@ class PaymentHelper
 
     public function getPaymentKeyByMop($mop)
     {
-        $paymentMethods = $this->paymentMethodRepository->allForPlugin('plentyCeevo');
+        $paymentMethods = $this->paymentMethodRepository->allForPlugin('ceevo');
         if(!is_null($paymentMethods))
         {
             foreach($paymentMethods as $paymentMethod)
