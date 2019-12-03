@@ -57,7 +57,7 @@ class PaymentHelper
      */
     private $statusMap = array();
 
-    const PAYMENTKEY_CEEVO = 'CV';
+    const PAYMENTKEY_CEEVO = 'CEEVO_PAYMENT';
     const PAYMENTKEY_CEEVO_NAME = 'CEEVO';
     /**
      * PaymentHelper constructor.
@@ -100,13 +100,13 @@ class PaymentHelper
         {
             foreach($paymentMethods as $paymentMethod)
             {
-                if($paymentMethod->paymentKey == 'CEEVO')
+                if($paymentMethod->paymentKey == $paymethod)
                 {
                     return $paymentMethod->id;
                 }
             }
         }
-
+ 
         return 'no_paymentmethod_found';
     }
 
