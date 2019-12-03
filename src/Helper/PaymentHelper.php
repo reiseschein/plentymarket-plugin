@@ -116,7 +116,7 @@ class PaymentHelper
         {
             foreach($paymentMethods as $paymentMethod)
             {
-                if($paymentMethod->paymentKey == 'CEEVO'.$paymethod)
+                if($paymentMethod->paymentKey == 'CEEVO')
                 {
                     return $paymentMethod->id;
                 }
