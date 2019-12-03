@@ -80,7 +80,7 @@ class CeevoServiceProvider extends ServiceProvider
                             EventProceduresService $eventProceduresService)
     {
         $regName = 'ceevo::CEEVO';
-        $className = 'Ceevo\Methods\CeevoPaymentMethod'; 
+        $className = 'Ceevo\Methods\CeevoPaymentMethodCV'; 
         // Register the payment method in the payment method container
         $payContainer->register($regName, $className, 
           [ 
