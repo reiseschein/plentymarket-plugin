@@ -1,16 +1,6 @@
 # Ceevo - Take Payments globally, reliably, and inexpensively. 
 
- 
-
-Let your money flow and your sales grow.
- 
-Business isn’t easy, and to succeed, you need to focus on keeping ahead of customer demand. We effortlessly handle the ever-changing ways they want to pay, so money keeps flowing through your business. 
-
- 
-
-With the plentymarkets plugin you are able to use various payment methods, check this https://www.ceevo.com/all-pricing/ for details
- 
-## Opening a account
+## Opening an account
  
 You need to [sign up test account](https://dashboard.ceevo.com/signup) before you can set up the payment method in plentymarkets. You will then receive information and access data, which you will need for setting up the function in plentymarkets.
  
