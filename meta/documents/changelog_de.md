@@ -1,10 +1,16 @@
-# Release 1.1.3 03/12/2019
+# Veröffentlichung 1.1.4 10/12/2019
 
-#### Changes
+#### Änderungen
+
+- Änderungsprotokoll aktualisiert
+
+# Veröffentlichung 1.1.3 03/12/2019
+
+#### Änderungen
 
 - Fehler beheben
 
-# Release 1.1.1 03/12/2019
+# Veröffentlichung 1.1.1 03/12/2019
 
 #### Änderungen
 

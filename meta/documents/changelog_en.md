@@ -1,3 +1,9 @@
+# Release 1.1.4 10/12/2019
+
+#### Changes
+
+- updated change log
+
 # Release 1.1.3 03/12/2019
 
 #### Changes
