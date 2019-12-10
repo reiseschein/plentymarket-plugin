@@ -54,7 +54,7 @@ class PayCore
 
   function registerAccountToken($conf, $customer_registered_id){
       $url = $conf['API.URL'];
-      $token_array = array("account_token" => $conf['tokenise']['card_token'],"is_default" => true,"verify" => true);
+      $token_array = array("account_token" => $conf['tokenise']['card_token'],"is_default" => true);
       $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $token_array);
       $token_string = json_encode($token_array);
       $this->callAPI('POST', $url . '/payment/customer/'.$customer_registered_id, $conf, $token_string);

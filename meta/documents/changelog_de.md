@@ -1,3 +1,9 @@
+# Veröffentlichung 1.1.5 10/12/2019
+
+#### Änderungen
+
+- Überprüfungs-Tag entfernt
+
 # Veröffentlichung 1.1.4 10/12/2019
 
 #### Änderungen

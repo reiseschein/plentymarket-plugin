@@ -1,3 +1,10 @@
+# Release 1.1.5 10/12/2019
+
+#### Changes
+
+- removed verify tag
+
+
 # Release 1.1.4 10/12/2019
 
 #### Changes
