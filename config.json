@@ -74,6 +74,24 @@
                        ]
                     }
                  },
+                 "capture":{
+                  "type":"selectBox",
+                  "required":false,
+                  "label":"Config.captureLabel",
+                  "options":{
+                     "defaultValue":"Yes",
+                     "selectBoxValues":[
+                        {
+                           "value":"Yes",
+                           "caption":"Config.capturePossibleValueTrue"
+                        },
+                        {
+                           "value":"No",
+                           "caption":"Config.capturePossibleValueFalse"
+                        }
+                     ]
+                  }
+               },
                 "clientId": {
                     "type": "inputText",
                     "required": false,

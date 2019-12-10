@@ -91,6 +91,7 @@ class PayCore
     $apiKey =  $param['API.KEY'];
     $mode = $param['ENV.MODE'];
     $threed = ($param['3D.SECURE'] == 'No') ? 'false' : 'true';
+    $isCapture = ($param['CAPTURE'] == 'No') ? 'false' : 'true';
 
     $items_array = array();
     foreach($param['basketItems'] as $item){      
@@ -107,7 +108,7 @@ class PayCore
     $failURL = $param['REQUEST']['CRITERION.FAILURL'];
     $cparam = '{"amount": '.( $param['REQUEST']['AMOUNT'] * 100 ).',
             "3dsecure": '.$threed.',
-            "capture": true,
+            "capture": '.$isCapture.',
             "mode" : "'.$mode.'",
             "method_code":  "'.$param['tokenise']['method_code'].'",
             "currency": "'.$param['REQUEST']['CURRENCY'].'",

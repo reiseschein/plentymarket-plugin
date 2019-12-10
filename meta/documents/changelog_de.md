@@ -1,3 +1,9 @@
+# Veröffentlichung 1.1.6 10/12/2019
+
+#### Änderungen
+
+- Option hinzugefügt 'capture'
+
 # Veröffentlichung 1.1.5 10/12/2019
 
 #### Änderungen
