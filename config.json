@@ -17,7 +17,7 @@
                     "required":false,
                     "label":"Config.descCvLabel",
                     "options":{
-                       "defaultValue":"Ceevo Payment"
+                       "defaultValue":"Ceevo payment plugin for plentymarkets"
                     }
                  },
                 "environment":{
@@ -61,14 +61,14 @@
                     "required":false,
                     "label":"Config.3dsecureLabel",
                     "options":{
-                       "defaultValue":"Yes",
+                       "defaultValue":"true",
                        "selectBoxValues":[
                           {
-                             "value":"Yes",
+                             "value":"true",
                              "caption":"Config.3dSecurePossibleValueTrue"
                           },
                           {
-                             "value":"No",
+                             "value":"false",
                              "caption":"Config.3dSecurePossibleValueFalse"
                           }
                        ]

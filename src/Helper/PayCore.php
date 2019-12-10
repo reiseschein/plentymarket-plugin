@@ -90,7 +90,7 @@ class PayCore
     $orderId =  $param['REQUEST']['ORDER.ID'];
     $apiKey =  $param['API.KEY'];
     $mode = $param['ENV.MODE'];
-    $threed = ($param['3D.SECURE'] == 'No') ? 'false' : 'true';
+    $threed = $param['3D.SECURE'];
     $isCapture = $param['TRANSACTION.TYPE'];
 
     $items_array = array();

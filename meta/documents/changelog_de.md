@@ -1,3 +1,10 @@
+# Veröffentlichung 1.1.8 10/12/2019
+
+#### Änderungen
+
+- aktualisierte Beschreibung
+- aktualisierter 3d sicherer Wert
+
 # Veröffentlichung 1.1.7 10/12/2019
 
 #### Änderungen

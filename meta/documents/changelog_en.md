@@ -1,3 +1,10 @@
+# Release 1.1.8 10/12/2019
+
+#### Changes
+
+- updated description
+- updated 3d secure value
+
 # Release 1.1.7 10/12/2019
 
 #### Changes
