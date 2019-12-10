@@ -1,3 +1,9 @@
+# Release 1.2.0 10/12/2019
+
+#### Changes
+
+- updated option 'name'
+
 # Release 1.1.9 10/12/2019
 
 #### Changes

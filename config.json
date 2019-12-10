@@ -7,7 +7,7 @@
                 "name_cv": {
                     "type": "inputText",
                     "required": false,
-                    "label": "Config.nameLabel",
+                    "label": "Config.nameCvLabel",
                     "options": {
                         "defaultValue": "Ceevo Payment"
                     }

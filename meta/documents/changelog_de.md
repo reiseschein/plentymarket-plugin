@@ -1,3 +1,9 @@
+# Veröffentlichung 1.2.0 10/12/2019
+
+#### Änderungen
+
+- aktualisierte option 'name'
+
 # Veröffentlichung 1.1.9 10/12/2019
 
 #### Änderungen
