@@ -74,20 +74,20 @@
                        ]
                     }
                  },
-                 "capture":{
+                 "transactionType":{
                   "type":"selectBox",
                   "required":false,
-                  "label":"Config.captureLabel",
+                  "label":"Config.transactionTypeLabel",
                   "options":{
-                     "defaultValue":"Yes",
+                     "defaultValue":"true",
                      "selectBoxValues":[
                         {
-                           "value":"Yes",
-                           "caption":"Config.capturePossibleValueTrue"
+                           "value":"true",
+                           "caption":"Config.transactionTypePossibleValueTrue"
                         },
                         {
-                           "value":"No",
-                           "caption":"Config.capturePossibleValueFalse"
+                           "value":"false",
+                           "caption":"Config.transactionTypePossibleValueFalse"
                         }
                      ]
                   }

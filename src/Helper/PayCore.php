@@ -91,7 +91,7 @@ class PayCore
     $apiKey =  $param['API.KEY'];
     $mode = $param['ENV.MODE'];
     $threed = ($param['3D.SECURE'] == 'No') ? 'false' : 'true';
-    $isCapture = ($param['CAPTURE'] == 'No') ? 'false' : 'true';
+    $isCapture = $param['TRANSACTION.TYPE'];
 
     $items_array = array();
     foreach($param['basketItems'] as $item){      

@@ -186,7 +186,7 @@ class PaymentService
         $apiContextParams['API.KEY'] = $this->config->get('Ceevo.apiKey');
         $apiContextParams['ENV.MODE'] = $this->config->get('Ceevo.environment');
         $apiContextParams['3D.SECURE'] = $this->config->get('Ceevo.3dsecure');
-        $apiContextParams['CAPTURE'] = $this->config->get('Ceevo.capture');
+        $apiContextParams['TRANSACTION.TYPE'] = $this->config->get('Ceevo.transactionType');
         // if ($apiContextParams['ENV.MODE'] == 'LIVE') {
           $apiContextParams['API.URL'] = $this->payCore->live_url;
           $apiContextParams['TOKEN.URL'] = $this->payCore->live_token_url;

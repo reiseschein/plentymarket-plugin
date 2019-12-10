@@ -1,3 +1,9 @@
+# Release 1.1.7 10/12/2019
+
+#### Changes
+
+- updated option 'capture' to 'transaction type'
+
 # Release 1.1.6 10/12/2019
 
 #### Changes
