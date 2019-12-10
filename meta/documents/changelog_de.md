@@ -1,9 +1,15 @@
+# Veröffentlichung 1.1.9 10/12/2019
+
+#### Änderungen
+
+- aktualisiertes vorschaubild 1
+
 # Veröffentlichung 1.1.8 10/12/2019
 
 #### Änderungen
 
-- aktualisierte Beschreibung
-- aktualisierter 3d sicherer Wert
+- aktualisierte beschreibung
+- aktualisierter 3d sicherer wert
 
 # Veröffentlichung 1.1.7 10/12/2019
 
