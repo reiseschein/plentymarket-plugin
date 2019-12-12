@@ -283,7 +283,7 @@ class PaymentHelper
     public function pushNotification($message, $code = 0)
     {
         try {
-            $notification = [
+            $notifications = [
               'message'       => $message,
               'code'          => $code,
               'stackTrace'    => []
