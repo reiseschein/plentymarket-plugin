@@ -293,7 +293,6 @@ class PaymentHelper
 
             $notifications[$type] = $notification;
             $this->sessionService->setSessionValue('notifications', json_encode($notifications));
-            $this->sessionService->getPlugin()->setValue('notifications', json_encode($notifications));
         } catch (\Exception $exception) {
             $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $exception);
         }
