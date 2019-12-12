@@ -150,15 +150,19 @@ class CeevoResponseController extends Controller
           $redirection = 'place-order';
           break;
         case 'PENDING':
+          $this->paymentHelper->pushNotification("Transaction " . $status);
           $redirection = 'checkout';
           break;
-        case 'CANCEL':          
+        case 'CANCEL':   
+          $this->paymentHelper->pushNotification("Transaction " . $status);       
           $redirection = 'basket';
           break;
         case 'FAILED':
+          $this->paymentHelper->pushNotification("Transaction " . $status);
           $redirection = 'checkout';
           break;
         case 'ERROR':
+          $this->paymentHelper->pushNotification("Transaction " . $status);
           $redirection = 'checkout';
           break;
         default:

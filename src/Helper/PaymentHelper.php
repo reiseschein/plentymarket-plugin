@@ -279,4 +279,14 @@ class PaymentHelper
             $logger->info('Ceevo::Logger.infoCaption', $arg);
         }
     }
+
+    public function pushNotification($message)
+    {
+        try {
+            $notificationService = pluginApp('\IO\Services\NotificationService');
+            $notificationService->error($message);
+        } catch (\Exception $exception) {
+            $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $exception);
+        }
+    }
 }
