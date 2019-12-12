@@ -161,7 +161,7 @@ class PaymentService
         */
         
         // Execute the payment
-        $executeResponse = array('success' => 1);
+        $executeResponse = ($lastReq['STATUS']== 'SUCCEEDED') ? array('success' => 1) : array('error' => 1);
 
         // Check for errors
         /*

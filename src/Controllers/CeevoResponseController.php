@@ -163,7 +163,7 @@ class CeevoResponseController extends Controller
           break;
         case 'ERROR':
           $this->paymentHelper->pushNotification("Transaction " . $status);
-          $redirection = 'confirmation';
+          $redirection = 'place-order';
           break;
         default:
           $redirection = 'checkout';
