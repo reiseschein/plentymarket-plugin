@@ -162,7 +162,11 @@ class PaymentService
         
         // Execute the payment
         $executeResponse = ($lastReq['STATUS']== 'SUCCEEDED') ? array('success' => 1) : array('error' => 1);
-
+        $this
+        ->getLogger(__CLASS__ . '_' . __METHOD__)
+        ->info('Ceevo::Logger.infoCaption', [
+          'executeResponse' => $executeResponse
+        ]);
         // Check for errors
         /*
         if(is_array($executeResponse) && $executeResponse['error'])
