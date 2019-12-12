@@ -215,7 +215,8 @@ class CeevoResponseController extends Controller
         $requestParams['STATUS'] = $res['status'];
         $this->sessionStorage->setSessionValue('lastReq', $requestParams);
         $redirection = $this->getRedirection($res['status']);
-        return $this->redirectPage($redirection);
+        return $this->response->redirectTo($redirection);
+        // return $this->redirectPage($redirection);
       }        
     }
 }
