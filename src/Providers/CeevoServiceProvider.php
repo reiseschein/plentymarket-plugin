@@ -164,7 +164,7 @@ class CeevoServiceProvider extends ServiceProvider
                   $event->setType('success');
                   $event->setValue('The Payment has been executed successfully!');
                 } else {
-                  $event->setType('error');
+                  $event->setType('errorCode');
                   $event->setValue('The Payment could not be executed!');
                 }                
               }  
