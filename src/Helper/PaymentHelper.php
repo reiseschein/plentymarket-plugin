@@ -280,17 +280,20 @@ class PaymentHelper
         }
     }
 
-    public function pushNotification($message, $code = 0)
+    public function pushNotification($message, $type = 'error', $code = 0)
     {
         try {
-            $notifications = [
+            $notification = [
               'message'       => $message,
               'code'          => $code,
               'stackTrace'    => []
             ];
             $notificationService = pluginApp('\IO\Services\NotificationService');
             $notificationService->error($message);
+
+            $notifications[$type] = $notification;
             $this->sessionService->setSessionValue('notifications', json_encode($notifications));
+            $this->sessionService->getPlugin()->setValue('notifications', json_encode($notifications));
         } catch (\Exception $exception) {
             $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $exception);
         }
