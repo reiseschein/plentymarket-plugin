@@ -46,7 +46,7 @@ class PayCore
 
   function genCardTokenWidget($twig, $param) {
     $content = '<button type="button" data-dismiss="modal" aria-label="Close" class="close" onclick="location.href=\'/checkout\'"><span aria-hidden="true">×</span></button>
-    <center><iframe src="payment/ceevo/token_frame" frameborder="0" width="100%" height="800px"></iframe></center>';
+    <center><iframe src="payment/ceevo/token_frame" frameborder="0" width="100%" height="800px" id="widget_frame"></iframe></center>';
     return $content;
     // return $twig->render('Ceevo::content.tokenise', ['apiKey' => $param['API.KEY'], 'mode' => $param['ENV.MODE'], 'price' => $param['PRICE'], 
     //                       'currency' => $param['CURRENCY'], 'apiUrl' => $apiUrl, 'cardTokenUrl' => $param['cardTokenUrl']]);

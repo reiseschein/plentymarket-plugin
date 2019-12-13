@@ -1,5 +1,8 @@
 {% if errorText %}
-<div style="padding: 10px">
+<div style="color:red;padding: 10px">
 <h5>{{ statusCode }}: {{ errorText }}</h5>
 </div>
+<script>
+    window.parent.document.getElementById('widget_frame').height = '120px';
+</script>
 {% endif%}
