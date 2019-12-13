@@ -163,7 +163,8 @@ class CeevoResponseController extends Controller
           break;
         case 'ERROR':
           $this->paymentHelper->pushNotification("Transaction " . $status);
-          $redirection = 'checkout';
+          $this->twig->render('Ceevo::content.error', ['errorText' => "Transaction " . $status]);
+          // $redirection = 'checkout';
           break;
         default:
           $redirection = 'checkout';
