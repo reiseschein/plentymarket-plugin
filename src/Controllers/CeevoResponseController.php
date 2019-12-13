@@ -159,9 +159,7 @@ class CeevoResponseController extends Controller
           $redirection = 'checkout';
           break;
         case 'ERROR':
-          
-          errorMessage($status);
-          // $redirection = 'checkout';
+          $redirection = 'checkout';
           break;
         default:
           $redirection = 'checkout';
@@ -219,7 +217,8 @@ class CeevoResponseController extends Controller
         $this->sessionStorage->setSessionValue('lastReq', $requestParams);
         $redirection = $this->getRedirection($res['status']);
         // return $this->response->redirectTo('checkout');
-        return $this->redirectPage($redirection);
+        return $this->errorMessage($res['status']);
+        // return $this->redirectPage($redirection);
       }        
     }
 }
