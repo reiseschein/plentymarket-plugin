@@ -160,7 +160,7 @@ class CeevoResponseController extends Controller
           break;
         case 'ERROR':
           
-          errorPage($status);
+          errorMessage($status);
           // $redirection = 'checkout';
           break;
         default:
@@ -174,7 +174,7 @@ class CeevoResponseController extends Controller
       return $this->twig->render('Ceevo::content.redirect', ['redirection' => $redirection]);
     }
 
-    public function errorPage($msg) {
+    public function errorMessage($msg) {
       $this->paymentHelper->pushNotification($msg);
       return $this->twig->render('Ceevo::content.error', ['errorText' => $msg]);
     }
