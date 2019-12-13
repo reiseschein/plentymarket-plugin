@@ -150,20 +150,17 @@ class CeevoResponseController extends Controller
           $redirection = 'place-order';
           break;
         case 'PENDING':
-          $this->paymentHelper->pushNotification("Transaction " . $status);
           $redirection = 'checkout';
           break;
-        case 'CANCEL':   
-          $this->paymentHelper->pushNotification("Transaction " . $status);       
+        case 'CANCEL':      
           $redirection = 'basket';
           break;
         case 'FAILED':
-          $this->paymentHelper->pushNotification("Transaction " . $status);
           $redirection = 'checkout';
           break;
         case 'ERROR':
-          $this->paymentHelper->pushNotification("Transaction " . $status);
-          $this->twig->render('Ceevo::content.error', ['errorText' => "Transaction " . $status]);
+          
+          return errorPage($status);
           // $redirection = 'checkout';
           break;
         default:
@@ -175,6 +172,11 @@ class CeevoResponseController extends Controller
     public function redirectPage($redirection) {
       // $redirection = '../../' . $redirection; 
       return $this->twig->render('Ceevo::content.redirect', ['redirection' => $redirection]);
+    }
+
+    public function errorPage($msg) {
+      $this->paymentHelper->pushNotification($msg);
+      return $this->twig->render('Ceevo::content.error', ['errorText' => $msg]);
     }
 
     public function getTokenFrame() {
