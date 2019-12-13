@@ -172,9 +172,25 @@ class CeevoResponseController extends Controller
       return $this->twig->render('Ceevo::content.redirect', ['redirection' => $redirection]);
     }
 
-    public function errorMessage($msg) {
+    public function errorMessage($status = 'ERROR') {
+      switch($status) {
+        case 'PENDING':
+          $msg = 'The payment is pending.';
+          break;
+        case 'CANCEL':      
+          $msg = 'The payment has been cancelled.';
+          break;
+        case 'FAILED':
+          $msg = 'The payment declined by bank.';
+          break;
+        case 'ERROR':
+          $msg = 'The payment could not be executed.';
+          break;
+        default:
+          $msg = 'The payment could not be executed.';
+      }
       $this->paymentHelper->pushNotification($msg);
-      return $this->twig->render('Ceevo::content.error', ['errorText' => $msg]);
+      return $this->twig->render('Ceevo::content.error', ['statusCode' => $status,'errorText' => $msg]);
     }
 
     public function getTokenFrame() {
@@ -216,8 +232,11 @@ class CeevoResponseController extends Controller
         $requestParams['STATUS'] = $res['status'];
         $this->sessionStorage->setSessionValue('lastReq', $requestParams);
         $redirection = $this->getRedirection($res['status']);
-        // return $this->response->redirectTo('checkout');
-        return $this->errorMessage($res['status']);
+        if($redirection == 'place-order') {
+          return $this->redirectPage($redirection);
+        } else {
+          return $this->errorMessage($res['status']);
+        }
         // return $this->redirectPage($redirection);
       }        
     }

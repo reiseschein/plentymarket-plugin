@@ -1,3 +1,9 @@
+# Release 1.2.1 13/12/2019
+
+#### Changes
+
+- added error message
+
 # Release 1.2.0 10/12/2019
 
 #### Changes
