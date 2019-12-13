@@ -160,7 +160,7 @@ class CeevoResponseController extends Controller
           break;
         case 'ERROR':
           
-          return errorPage($status);
+          errorPage($status);
           // $redirection = 'checkout';
           break;
         default:
