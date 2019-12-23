@@ -1,3 +1,9 @@
+# Veröffentlichung 1.2.3 23/12/2019
+
+#### Änderungen
+
+- aktualisiert README.md
+
 # Veröffentlichung 1.2.2 13/12/2019
 
 #### Änderungen
