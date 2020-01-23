@@ -215,29 +215,33 @@ class CeevoResponseController extends Controller
       $access_token = $payCore->getToken($requestParams);
       $requestParams['tokenise'] = $data;
       $customer_id = $payCore->createCustomer($requestParams);
-      $requestParams['customer_id'] = $customer_id;
-      $payCore->registerAccountToken($requestParams, $customer_id );
-      $this->sessionStorage->setSessionValue('lastReq', $requestParams);
-
-      $res = $payCore->chargeApi($requestParams);
-      $this->sessionStorage->setSessionValue('lastRes', $res);
-      $this->sessionStorage->setSessionValue('lastTrxID', $res['payment_id']);
-      $this->sessionStorage->setSessionValue('lastUniqueID', $res['payment_id']);
-      
-
-      if($res['3d_url'] != "") {
-        $this->sessionStorage->setSessionValue('oneTimeKey', $res['message']);
-        return $this->response->redirectTo($res['3d_url']);
-      } else {
-        $requestParams['STATUS'] = $res['status'];
+      if($customer_id != "") {
+        $requestParams['customer_id'] = $customer_id;
+        $payCore->registerAccountToken($requestParams, $customer_id );
         $this->sessionStorage->setSessionValue('lastReq', $requestParams);
-        $redirection = $this->getRedirection($res['status']);
-        if($redirection == 'place-order') {
-          return $this->redirectPage($redirection);
+
+        $res = $payCore->chargeApi($requestParams);
+        $this->sessionStorage->setSessionValue('lastRes', $res);
+        $this->sessionStorage->setSessionValue('lastTrxID', $res['payment_id']);
+        $this->sessionStorage->setSessionValue('lastUniqueID', $res['payment_id']);
+        
+
+        if($res['3d_url'] != "") {
+          $this->sessionStorage->setSessionValue('oneTimeKey', $res['message']);
+          return $this->response->redirectTo($res['3d_url']);
         } else {
-          return $this->errorMessage($res['status']);
+          $requestParams['STATUS'] = $res['status'];
+          $this->sessionStorage->setSessionValue('lastReq', $requestParams);
+          $redirection = $this->getRedirection($res['status']);
+          if($redirection == 'place-order') {
+            return $this->redirectPage($redirection);
+          } else {
+            return $this->errorMessage($res['status']);
+          }
+          // return $this->redirectPage($redirection);
         }
-        // return $this->redirectPage($redirection);
-      }        
+      } else {
+        return $this->errorMessage();
+      }    
     }
 }
