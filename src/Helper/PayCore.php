@@ -70,7 +70,7 @@ class PayCore
     $ch = curl_init(); 
     curl_setopt($ch, CURLOPT_URL,$api); 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER,1); 
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+    //curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 1);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
     
     curl_setopt($ch, CURLOPT_POST, 1);
@@ -131,9 +131,10 @@ class PayCore
             "user_email": "'.$userData['email'].'"}';
     $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $cparam);
     $ch = curl_init(); 
-    curl_setopt($ch, CURLOPT_URL,$charge_api);           
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($ch, CURLOPT_URL,$charge_api); 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1); 
+    //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_HEADER, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $cparam);
@@ -165,18 +166,18 @@ class PayCore
     $access_token = $this->access_token;
     $authorization = "Authorization: Bearer $access_token";
 
-    $ch = curl_init();
+    $curl = curl_init();
     $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $data);
     switch ($method){
         case "POST":
-          curl_setopt($ch, CURLOPT_POST, 1);
+          curl_setopt($curl, CURLOPT_POST, 1);
           if ($data)
-              curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+              curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
           break;
         case "PUT":
-          curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+          curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
           if ($data)
-              curl_setopt($ch, CURLOPT_POSTFIELDS, $data);                                 
+              curl_setopt($curl, CURLOPT_POSTFIELDS, $data);                                 
           break;
         default:
           if ($data)
@@ -184,27 +185,26 @@ class PayCore
     }
     
     // OPTIONS:
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_HEADER, 1);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_HEADER, 1);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, array(
         'Content-Type: application/json',
         'Content-Length: ' . strlen($data),
         $authorization
     ));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+
     // EXECUTE:
-    $response = curl_exec($ch);
+    $response = curl_exec($curl);
     
     $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $response);
     // Retudn headers seperatly from the Response Body
-    $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+    $header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
     $headers = substr($response, 0, $header_size);
     $body = substr($response, $header_size);
 
-    curl_close($ch);
+    curl_close($curl);
     header("Content-Type:text/plain; charset=UTF-8");
     $transactionHeaders = $this->http_parse_headers($headers);
     $cusId = '';
