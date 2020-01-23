@@ -70,13 +70,8 @@ class PayCore
     $ch = curl_init(); 
     curl_setopt($ch, CURLOPT_URL,$api); 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER,1); 
-    if(file_exists(dirname(__FILE__).'/cacert.txt')) {            
-      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-      curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__).'/cacert.txt');
-    } else {
-        curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 2);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-    }
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
     
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($param));
@@ -136,15 +131,9 @@ class PayCore
             "user_email": "'.$userData['email'].'"}';
     $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $cparam);
     $ch = curl_init(); 
-    curl_setopt($ch, CURLOPT_URL,$charge_api); 
-    if(file_exists(dirname(__FILE__).'/cacert.txt')) {            
-      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-      curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__).'/cacert.txt');
-    } else {
-        curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 2);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-    }
-    
+    curl_setopt($ch, CURLOPT_URL,$charge_api);           
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_HEADER, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $cparam);
@@ -204,13 +193,8 @@ class PayCore
     ));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-    if(file_exists(dirname(__FILE__).'/cacert.txt')) {            
-      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-      curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__).'/cacert.txt');
-    } else {
-        curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 2);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-    }
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
     // EXECUTE:
     $response = curl_exec($ch);
     
