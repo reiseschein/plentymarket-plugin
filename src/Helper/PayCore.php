@@ -176,18 +176,18 @@ class PayCore
     $access_token = $this->access_token;
     $authorization = "Authorization: Bearer $access_token";
 
-    $curl = curl_init();
+    $ch = curl_init();
     $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $data);
     switch ($method){
         case "POST":
-          curl_setopt($curl, CURLOPT_POST, 1);
+          curl_setopt($ch, CURLOPT_POST, 1);
           if ($data)
-              curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+              curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
           break;
         case "PUT":
-          curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+          curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
           if ($data)
-              curl_setopt($curl, CURLOPT_POSTFIELDS, $data);                                 
+              curl_setopt($ch, CURLOPT_POSTFIELDS, $data);                                 
           break;
         default:
           if ($data)
@@ -195,15 +195,15 @@ class PayCore
     }
     
     // OPTIONS:
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_HEADER, 1);
-    curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HEADER, 1);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'Content-Type: application/json',
         'Content-Length: ' . strlen($data),
         $authorization
     ));
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
     if(file_exists(dirname(__FILE__).'/cacert.pem')) {            
       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
       curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__).'/cacert.pem');
@@ -212,15 +212,15 @@ class PayCore
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
     }
     // EXECUTE:
-    $response = curl_exec($curl);
+    $response = curl_exec($ch);
     
     $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $response);
     // Retudn headers seperatly from the Response Body
-    $header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
+    $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
     $headers = substr($response, 0, $header_size);
     $body = substr($response, $header_size);
 
-    curl_close($curl);
+    curl_close($ch);
     header("Content-Type:text/plain; charset=UTF-8");
     $transactionHeaders = $this->http_parse_headers($headers);
     $cusId = '';
