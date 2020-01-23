@@ -241,7 +241,7 @@ class CeevoResponseController extends Controller
           // return $this->redirectPage($redirection);
         }
       } else {
-        return $this->errorMessage();
+        return $this->errorMessage('ERROR');
       }    
     }
 }
