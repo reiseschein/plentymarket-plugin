@@ -215,7 +215,7 @@ class CeevoResponseController extends Controller
       $access_token = $payCore->getToken($requestParams);
       $requestParams['tokenise'] = $data;
       $customer_id = $payCore->createCustomer($requestParams);
-      if($customer_id != "") {
+      // if($customer_id != "") {
         $requestParams['customer_id'] = $customer_id;
         $payCore->registerAccountToken($requestParams, $customer_id );
         $this->sessionStorage->setSessionValue('lastReq', $requestParams);
@@ -240,8 +240,8 @@ class CeevoResponseController extends Controller
           }
           // return $this->redirectPage($redirection);
         }
-      } else {
-        return $this->errorMessage('ERROR');
-      }    
+      // } else {
+      //   return $this->errorMessage('ERROR');
+      // }    
     }
 }
