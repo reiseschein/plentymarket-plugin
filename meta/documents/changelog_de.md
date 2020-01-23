@@ -1,3 +1,9 @@
+# Veröffentlichung 1.2.4 23/1/2020
+
+#### Änderungen
+
+- fehler beheben
+
 # Veröffentlichung 1.2.3 23/12/2019
 
 #### Änderungen
