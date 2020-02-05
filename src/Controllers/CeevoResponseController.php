@@ -161,6 +161,9 @@ class CeevoResponseController extends Controller
         case 'ERROR':
           $redirection = 'checkout';
           break;
+        case 'RISK':
+          $redirection = 'checkout';
+          break;
         default:
           $redirection = 'checkout';
       }
@@ -185,6 +188,9 @@ class CeevoResponseController extends Controller
           break;
         case 'ERROR':
           $msg = 'The payment could not be executed.';
+          break;
+        case 'RISK':
+          $msg = 'The payment has been declined by risk.';
           break;
         default:
           $msg = 'The payment could not be executed.';
