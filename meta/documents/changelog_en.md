@@ -1,3 +1,9 @@
+# Release 1.3.2 26/2/2020
+
+#### Changes
+
+- Added logo URL
+
 # Release 1.3.1 5/2/2020
 
 #### Changes

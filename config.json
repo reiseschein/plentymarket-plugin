@@ -115,6 +115,14 @@
                     "options": {
                         "defaultValue": ""
                     }
+                },
+                "logoUrl": {
+                    "type": "inputText",
+                    "required": false,
+                    "label": "Config.logoUrlLabel",
+                    "options": {
+                        "defaultValue": ""
+                    }
                 }
             }
         }

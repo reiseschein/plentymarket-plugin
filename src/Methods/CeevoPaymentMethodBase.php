@@ -108,12 +108,15 @@ class CeevoPaymentMethodBase extends PaymentMethodService
      */
     public function getIcon()
     {
-        
-          $app = pluginApp(Application::class);
+      $app = pluginApp(Application::class);
+      $logoUrl = $this->configRepo->get('Ceevo.logoUrl');
+      if(!strlen($logoUrl)) {
+        $icon = $logoUrl;
+      } else {
         $icon = $app->getUrlPath('ceevo').'/images/'.$this->icons[$this->type];
+      }
 
-        return $icon;
-        
+      return $icon;
     }
 
     /**
