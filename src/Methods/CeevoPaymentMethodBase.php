@@ -111,9 +111,9 @@ class CeevoPaymentMethodBase extends PaymentMethodService
       $app = pluginApp(Application::class);
       $logoUrl = $this->configRepo->get('Ceevo.logoUrl');
       if(!strlen($logoUrl)) {
-        $icon = $logoUrl;
-      } else {
         $icon = $app->getUrlPath('ceevo').'/images/'.$this->icons[$this->type];
+      } else {
+        $icon = $logoUrl;
       }
 
       return $icon;
