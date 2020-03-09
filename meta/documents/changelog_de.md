@@ -1,3 +1,9 @@
+# Veröffentlichung 1.3.3 9/3/2020
+
+#### Änderungen
+
+- E-Mail aktualisiert
+
 # Veröffentlichung 1.3.2 26/2/2020
 
 #### Änderungen
