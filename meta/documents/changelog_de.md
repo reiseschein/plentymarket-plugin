@@ -1,3 +1,9 @@
+# Veröffentlichung 1.3.4 9/3/2020
+
+#### Änderungen
+
+- Aktualisierter Autor
+
 # Veröffentlichung 1.3.3 9/3/2020
 
 #### Änderungen
