@@ -1,3 +1,9 @@
+# Veröffentlichung 1.3.6 11/3/2020
+
+#### Änderungen
+
+- fehler beheben
+
 # Veröffentlichung 1.3.4 9/3/2020
 
 #### Änderungen
