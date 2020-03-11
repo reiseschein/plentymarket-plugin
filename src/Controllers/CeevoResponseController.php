@@ -230,7 +230,6 @@ class CeevoResponseController extends Controller
         $this->sessionStorage->setSessionValue('lastRes', $res);
         $this->sessionStorage->setSessionValue('lastTrxID', $res['payment_id']);
         $this->sessionStorage->setSessionValue('lastUniqueID', $res['payment_id']);
-        
 
         if($res['3d_url'] != "") {
           $this->sessionStorage->setSessionValue('oneTimeKey', $res['message']);

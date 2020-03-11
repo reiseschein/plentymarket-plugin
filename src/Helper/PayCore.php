@@ -49,7 +49,7 @@ class PayCore
     $userData = $param['userData'];
 
     $customer_id = $this->getCustomerByEmail($param);
-    if(!$customer_id){
+    if($customer_id == false){
       $data = array("billing_address" => array("city" => $userData['city'], "country" => $userData['country'],"state" => $userData['state'],
                     "street" => $userData['street'],"zip_or_postal"=> $userData['zip']),"email" => $userData['email'],"first_name" => $userData['firstname'],
                     "last_name" => $userData['lastname'],"mobile" => $userData['phone'],"phone" => $userData['phone']);  
@@ -228,7 +228,7 @@ class PayCore
     $locationUrl = curl_getinfo($curl, CURLINFO_REDIRECT_URL);
     $headers = substr($response, 0, $header_size);
     $body = substr($response, $header_size);
-    $this->getLogger(__CLASS__ . '_' . $func)->info('Ceevo::Logger.infoCaption', ['response'=>$body]);
+    $this->getLogger(__CLASS__ . '_' . $func)->info('Ceevo::Logger.infoCaption', ['http_code'=>$hCode, 'response'=>$body]);
 
     curl_close($curl);
     header("Content-Type:text/plain; charset=UTF-8");
