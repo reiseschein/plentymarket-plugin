@@ -30,16 +30,32 @@ class PayCore
 
   public $access_token = '';
 
+  function getCustomerByEmail($param){
+    $url = $param['API.URL'];
+    $userData = $param['userData'];
+    $customer_id = false;
+
+    if($userData && array_key_exists('email', $userData)) {
+      $url = $url . '/payment/customer/'.$userData['email'];
+    
+      // $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', [ 'url' => $url, ]);
+      $customer_id = $this->callAPI('GET', $url, $param, null, __METHOD__);
+    }
+    return $customer_id;
+  }
+
   function createCustomer($param){
     $url = $param['API.URL'];
     $userData = $param['userData'];
 
-    $data = array("billing_address" => array("city" => $userData['city'], "country" => $userData['country'],"state" => $userData['state'],
-                  "street" => $userData['street'],"zip_or_postal"=> $userData['zip']),"email" => $userData['email'],"first_name" => $userData['firstname'],
-                  "last_name" => $userData['lastname'],"mobile" => $userData['phone'],"phone" => $userData['phone']);  
-    $data_string = json_encode($data);
-    $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $data);
-    $customer_id = $this->callAPI('POST', $url . '/payment/customer', $param, $data_string);
+    if(!$this->getCustomerByEmail($param)) {
+      $data = array("billing_address" => array("city" => $userData['city'], "country" => $userData['country'],"state" => $userData['state'],
+                    "street" => $userData['street'],"zip_or_postal"=> $userData['zip']),"email" => $userData['email'],"first_name" => $userData['firstname'],
+                    "last_name" => $userData['lastname'],"mobile" => $userData['phone'],"phone" => $userData['phone']);  
+      $data_string = json_encode($data);
+      // $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $data);
+      $customer_id = $this->callAPI('POST', $url . '/payment/customer', $param, $data_string, __METHOD__);
+    }
    
     return $customer_id;
   }
@@ -55,9 +71,9 @@ class PayCore
   function registerAccountToken($conf, $customer_registered_id){
       $url = $conf['API.URL'];
       $token_array = array("account_token" => $conf['tokenise']['card_token'],"is_default" => true);
-      $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $token_array);
+      // $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $token_array);
       $token_string = json_encode($token_array);
-      $this->callAPI('POST', $url . '/payment/customer/'.$customer_registered_id, $conf, $token_string);
+      $this->callAPI('POST', $url . '/payment/customer/'.$customer_registered_id, $conf, $token_string, __METHOD__);
   }
 
   function getToken($conf){
@@ -67,15 +83,16 @@ class PayCore
     $param['client_secret'] = $conf['CLIENT.SECRET']; 
     $mode = $conf['ENV.MODE'];
 
-    $ch = curl_init(); 
-    curl_setopt($ch, CURLOPT_URL,$api); 
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1); 
-    //curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 1);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-    
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($param));
-    $res = curl_exec($ch); 
+    $curl = curl_init(); 
+    curl_setopt($curl, CURLOPT_URL,$api); 
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER,1); 
+    //curl_setopt ($curl, CURLOPT_SSL_VERIFYHOST, 1);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($curl, CURLOPT_CONNECTTIMEOUT , 120);
+    curl_setopt($curl, CURLOPT_TIMEOUT, 120);
+    curl_setopt($curl, CURLOPT_POST, 1);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($param));
+    $res = curl_exec($curl); 
     $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $res);
     $jres = json_decode($res, true);
 
@@ -130,44 +147,48 @@ class PayCore
             },
             "user_email": "'.$userData['email'].'"}';
     $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $cparam);
-    $ch = curl_init(); 
-    curl_setopt($ch, CURLOPT_URL,$charge_api); 
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1); 
-    //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-    
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_HEADER, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $cparam);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    $curl = curl_init(); 
+    curl_setopt($curl, CURLOPT_URL,$charge_api); 
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER,1); 
+    //curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($curl, CURLOPT_CONNECTTIMEOUT , 120);
+    curl_setopt($curl, CURLOPT_TIMEOUT, 120);
+    curl_setopt($curl, CURLOPT_POST, 1);
+    curl_setopt($curl, CURLOPT_HEADER, 1);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $cparam);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json; charset=utf-8',
             'Content-Length: ' . strlen($cparam),
             $authorization
         )
     );
-    $cres = curl_exec($ch);
+    $cres = curl_exec($curl);
     $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $cres);
 
-    $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+    $header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
+    $locationUrl = curl_getinfo($curl, CURLINFO_REDIRECT_URL);
     $headers = substr($cres, 0, $header_size);
     $body = substr($cres, $header_size); 
     $jbody = json_decode($body, true);
-    curl_close($ch);
+    curl_close($curl);
 
     $transactionHeaders = $this->http_parse_headers($headers);
-    if($transactionHeaders[0]  == 'HTTP/1.1 302 Found'){
-      $jbody['3d_url']   = $transactionHeaders['Location'];   
+    if(empty($locationUrl)) {
+      $locationUrl   = $transactionHeaders['Location'] ? $transactionHeaders['Location'] : $transactionHeaders['location'];                
     }
+
+    $jbody['3d_url']   = $locationUrl;   
 
     return $jbody;
   }
 
-  function callAPI($method, $url, $conf, $data){
+  function callAPI($method, $url, $conf, $data, $func){
     $apiKey =  $conf['API.KEY'];
     $access_token = $this->access_token;
     $authorization = "Authorization: Bearer $access_token";
 
     $curl = curl_init();
-    $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $data);
+    $this->getLogger(__CLASS__ . '_' . $func)->info('Ceevo::Logger.infoCaption', ($data)?$data:['url' => $url]);
     switch ($method){
         case "POST":
           curl_setopt($curl, CURLOPT_POST, 1);
@@ -194,30 +215,49 @@ class PayCore
     ));
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+    curl_setopt($curl, CURLOPT_CONNECTTIMEOUT , 120);
+    curl_setopt($curl, CURLOPT_TIMEOUT, 120);
 
     // EXECUTE:
     $response = curl_exec($curl);
-    
-    $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $response);
+    $hCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        
     // Retudn headers seperatly from the Response Body
     $header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
+    $locationUrl = curl_getinfo($curl, CURLINFO_REDIRECT_URL);
     $headers = substr($response, 0, $header_size);
     $body = substr($response, $header_size);
+    $this->getLogger(__CLASS__ . '_' . $func)->info('Ceevo::Logger.infoCaption', ['response'=>$body]);
 
     curl_close($curl);
     header("Content-Type:text/plain; charset=UTF-8");
     $transactionHeaders = $this->http_parse_headers($headers);
-    $cusId = '';
-    $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $transactionHeaders);
-    if( $transactionHeaders[0]  == 'HTTP/1.1 201 Created') {
-        
-      $customerIdurl   = $transactionHeaders['Location'];
-      $remove_http = str_replace('http://', '', $customerIdurl);
-        $split_url = explode('?', $remove_http);
-        $get_page_name = explode('/', $split_url[0]);
-        $cusId = $get_page_name[4];
+    if(empty($locationUrl)) {
+      $locationUrl   = $transactionHeaders['Location'] ? $transactionHeaders['Location'] : $transactionHeaders['location'];                
     }
-    return $cusId;
+
+    $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $transactionHeaders);
+
+    $returnId = '';
+    $bodyDecode = json_decode($body);
+    switch ($callType) {
+      case 'getCustomerByEmail':                 
+          if($hCode == '404') {
+              $returnId = false;
+          } else {
+              $returnId = end($bodyDecode)->id;
+              $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', [ 'is_exist_customer' => $returnId, ]);
+          }
+      break;
+      case 'createCustomer':              
+          $path = parse_url($locationUrl, PHP_URL_PATH);
+          $returnId = basename($path);
+      break;
+      case 'registerAccountToken':
+          $returnId  =  $bodyDecode->status;
+      break;
+    }
+    return $returnId;
   }
 
   function http_parse_headers($raw_headers)
