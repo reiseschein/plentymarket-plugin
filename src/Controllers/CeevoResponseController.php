@@ -233,11 +233,13 @@ class CeevoResponseController extends Controller
 
         if($res['3d_url'] != "") {
           $this->sessionStorage->setSessionValue('oneTimeKey', $res['message']);
+          $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', ['is_3d'=>true,'3d_url' => $res['3d_url'],'oneTimeKey' => $res['message']]);
           return $this->response->redirectTo($res['3d_url']);
         } else {
           $requestParams['STATUS'] = $res['status'];
           $this->sessionStorage->setSessionValue('lastReq', $requestParams);
           $redirection = $this->getRedirection($res['status']);
+          $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', ['is_3d'=>false,'redirection' => $redirection,'status'=>$res['status'],'lastReq'=>$requestParams]);
           if($redirection == 'place-order') {
             return $this->redirectPage($redirection);
           } else {
