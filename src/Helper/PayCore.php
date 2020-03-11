@@ -237,7 +237,7 @@ class PayCore
       $locationUrl   = $transactionHeaders['Location'] ? $transactionHeaders['Location'] : $transactionHeaders['location'];                
     }
 
-    $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $transactionHeaders);
+    $this->getLogger(__CLASS__ . '_' . $func)->info('Ceevo::Logger.infoCaption', $transactionHeaders);
 
     $returnId = '';
     $bodyDecode = json_decode($body);
@@ -247,7 +247,7 @@ class PayCore
               $returnId = false;
           } else {
               $returnId = end($bodyDecode)->id;
-              $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', [ 'is_exist_customer' => $returnId, ]);
+              $this->getLogger(__CLASS__ . '_' . $func)->info('Ceevo::Logger.infoCaption', [ 'is_exist_customer' => $returnId, ]);
           }
       break;
       case 'createCustomer':              
