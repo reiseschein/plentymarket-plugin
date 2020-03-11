@@ -37,8 +37,6 @@ class PayCore
 
     if($userData && array_key_exists('email', $userData)) {
       $url = $url . '/payment/customer/'.$userData['email'];
-    
-      // $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', [ 'url' => $url, ]);
       $customer_id = $this->callAPI('GET', $url, $param, null, __METHOD__);
     }
     return $customer_id;
@@ -54,7 +52,6 @@ class PayCore
                     "street" => $userData['street'],"zip_or_postal"=> $userData['zip']),"email" => $userData['email'],"first_name" => $userData['firstname'],
                     "last_name" => $userData['lastname'],"mobile" => $userData['phone'],"phone" => $userData['phone']);  
       $data_string = json_encode($data);
-      // $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $data);
       $customer_id = $this->callAPI('POST', $url . '/payment/customer', $param, $data_string, __METHOD__);
     }
    
@@ -72,7 +69,6 @@ class PayCore
   function registerAccountToken($conf, $customer_registered_id){
       $url = $conf['API.URL'];
       $token_array = array("account_token" => $conf['tokenise']['card_token'],"is_default" => true);
-      // $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', $token_array);
       $token_string = json_encode($token_array);
       $this->callAPI('POST', $url . '/payment/customer/'.$customer_registered_id, $conf, $token_string, __METHOD__);
   }
@@ -241,7 +237,7 @@ class PayCore
 
     $returnId = '';
     $bodyDecode = json_decode($body);
-    switch ($callType) {
+    switch ($func) {
       case 'getCustomerByEmail':                 
           if($hCode == '404') {
               $returnId = false;
