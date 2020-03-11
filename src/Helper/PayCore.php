@@ -250,8 +250,8 @@ class PayCore
           }
       break;
       case 'createCustomer':              
-          $path = parse_url($locationUrl, PHP_URL_PATH);
-          $returnId = basename($path);
+          // $path = parse_url($locationUrl, PHP_URL_PATH);
+          $returnId = basename($locationUrl);
       break;
       case 'registerAccountToken':
           $returnId  =  $bodyDecode->status;
