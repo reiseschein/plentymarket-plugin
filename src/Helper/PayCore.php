@@ -48,7 +48,8 @@ class PayCore
     $url = $param['API.URL'];
     $userData = $param['userData'];
 
-    if(!$this->getCustomerByEmail($param)) {
+    $customer_id = $this->getCustomerByEmail($param);
+    if(!$customer_id){
       $data = array("billing_address" => array("city" => $userData['city'], "country" => $userData['country'],"state" => $userData['state'],
                     "street" => $userData['street'],"zip_or_postal"=> $userData['zip']),"email" => $userData['email'],"first_name" => $userData['firstname'],
                     "last_name" => $userData['lastname'],"mobile" => $userData['phone'],"phone" => $userData['phone']);  
