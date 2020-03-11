@@ -231,7 +231,7 @@ class CeevoResponseController extends Controller
         $this->sessionStorage->setSessionValue('lastTrxID', $res['payment_id']);
         $this->sessionStorage->setSessionValue('lastUniqueID', $res['payment_id']);
 
-        if($res['3d_url'] != "" && $res['status'] == 'PENDING') {
+        if($res['3d_url'] != "" && $res['status_code'] == 'PENDING') {
           $this->sessionStorage->setSessionValue('oneTimeKey', $res['message']);
           $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', ['is_3d'=>true,'3d_url' => $res['3d_url'],'oneTimeKey' => $res['message']]);
           return $this->response->redirectTo($res['3d_url']);
