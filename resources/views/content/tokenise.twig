@@ -36,8 +36,8 @@
         document.getElementById('session_hidden_input').value = detail.session_id;
         document.getElementById('method_code').value = detail.method_code;
         
-        $("checkout_form").submit(function(e){
-          $("checkout_form").html("<div class='modal-body'>Loading ...</div>");
+        $("#checkout_form").submit(function(e){
+          $("#checkout_form").html("<div class='modal-body'>Loading ...</div>");
         });
     });
   });
