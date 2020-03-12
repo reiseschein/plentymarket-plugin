@@ -14,6 +14,7 @@
   <input type="hidden" id="session_hidden_input" name="session_hidden_input">
   <input type="hidden" id="method_code" name="method_code">
 </form>
+<div id="ceevo_widget_loading" style="display:none;">Loading ...</div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.9.1/jquery.min.js"></script>
 <script src="{{sdkUrl}}/ceevo.js"></script>
 <script type="text/javascript" language="JavaScript">
@@ -36,9 +37,8 @@
         document.getElementById('session_hidden_input').value = detail.session_id;
         document.getElementById('method_code').value = detail.method_code;
         
-        $("#checkout_form").submit(function(e){
-          $("#checkout_form").append("<div class='modal-body'>Loading ...</div>");
-        });
+        document.getElementById('checkout_form').submit();
+        document.getElementById('ceevo_widget_loading').style.display = "block";
     });
   });
 </script>
