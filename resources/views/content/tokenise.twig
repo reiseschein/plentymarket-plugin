@@ -10,6 +10,9 @@
 </head>
 <body>
 <form id="checkout_form" action="{{cardTokenUrl}}" method="POST">
+  <input type="hidden" id="token_hidden_input" name="token_hidden_input" >
+  <input type="hidden" id="session_hidden_input" name="session_hidden_input">
+  <input type="hidden" id="method_code" name="method_code">
 </form>
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.9.1/jquery.min.js"></script>
 <script src="{{sdkUrl}}/ceevo.js"></script>
@@ -19,12 +22,24 @@
     var currency = "{{currency}}";
     var apiKey = "{{apiKey}}";
     var formId = "form#checkout_form";
-    var config = { envMode: "{{mode}}" };
+    var config = { envMode: "{{mode}}",lang: 'de', receiveTokensEvent: true };
     var ceevoPayment = new CeevoPayment(apiKey, formId, config);      
     var widget = ceevoPayment.widget();
+
     widget.setPrice(price);
     widget.setCurrency(currency);
     widget.open();
+
+    document.getElementById('checkout_form').addEventListener('receiveTokens', function ({ detail }) {
+        console.log('form.eventListener', detail);
+        document.getElementById("token_hidden_input").value = detail.card_token;
+        document.getElementById('session_hidden_input').value = detail.session_id;
+        document.getElementById('method_code').value = detail.method_code;
+        
+        $("checkout_form").submit(function(e){
+          $("checkout_form").html("<div class='modal-body'>Loading ...</div>");
+        });
+    });
   });
 </script>
 </body>
