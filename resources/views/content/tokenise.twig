@@ -10,8 +10,8 @@
 </head>
 <body>
 <form id="checkout_form" action="{{cardTokenUrl}}" method="POST">
-  <input type="hidden" id="token_hidden_input" name="token_hidden_input" >
-  <input type="hidden" id="session_hidden_input" name="session_hidden_input">
+  <input type="hidden" id="card_token" name="card_token" >
+  <input type="hidden" id="session_id" name="session_id">
   <input type="hidden" id="method_code" name="method_code">
 </form>
 <div id="ceevo_widget_loading" style="display:none;">Loading ...</div>
@@ -33,8 +33,8 @@
 
     document.getElementById('checkout_form').addEventListener('receiveTokens', function ({ detail }) {
         console.log('form.eventListener', detail);
-        document.getElementById("token_hidden_input").value = detail.card_token;
-        document.getElementById('session_hidden_input').value = detail.session_id;
+        document.getElementById("card_token").value = detail.card_token;
+        document.getElementById('session_id').value = detail.session_id;
         document.getElementById('method_code').value = detail.method_code;
         
         document.getElementById('checkout_form').submit();
