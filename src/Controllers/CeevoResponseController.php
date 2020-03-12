@@ -137,8 +137,9 @@ class CeevoResponseController extends Controller
       $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', ['status' => $status]);
       if($HMACSHA256 == $checksum) {
         $redirection = $this->getRedirection($status);
-      } else {        
-        $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', ['checksum' => $checksum]);
+      } else {    
+        $redirection = 'ERROR';
+        $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', ['invalid_checksum' => $checksum]);
       }
 
       return $this->redirectPage($redirection);
@@ -171,8 +172,13 @@ class CeevoResponseController extends Controller
     }
 
     public function redirectPage($redirection) {
-      // $redirection = '../../' . $redirection; 
-      return $this->twig->render('Ceevo::content.redirect', ['redirection' => $redirection]);
+      // return $this->twig->render('Ceevo::content.redirect', ['redirection' => $redirection]);
+
+      $webstoreHelper = pluginApp(\Plenty\Modules\Helper\Services\WebstoreHelper::class);
+      $redirection = $webstoreConfig->domainSsl . '/' . $redirection;
+      $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', ['redirection' => $redirection]);
+
+      return $this->response->redirectTo($redirection);
     }
 
     public function errorMessage($status = 'ERROR') {
