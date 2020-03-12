@@ -37,7 +37,7 @@
         document.getElementById('method_code').value = detail.method_code;
         
         $("#checkout_form").submit(function(e){
-          $("#checkout_form").html("<div class='modal-body'>Loading ...</div>");
+          $("#checkout_form").append("<div class='modal-body'>Loading ...</div>");
         });
     });
   });
