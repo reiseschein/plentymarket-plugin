@@ -133,16 +133,20 @@ class CeevoResponseController extends Controller
       $s = hash_hmac('sha256', $payload, $oneTimeKey, true);
       $checksum = base64_encode($s);
 
-      
       $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', ['status' => $status]);
       if($HMACSHA256 == $checksum) {
         $redirection = $this->getRedirection($status);
-      } else {    
-        $redirection = 'ERROR';
+      } else {
         $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', ['invalid_checksum' => $checksum]);
+        return $this->errorMessage();
       }
 
-      return $this->redirectPage($redirection);
+      // return $this->redirectPage($redirection);
+      if($redirection == 'place-order') {
+        return $this->redirectPage($redirection);
+      } else {
+        return $this->errorMessage($status);
+      }
     }
 
     public function getRedirection($status) {
