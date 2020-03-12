@@ -172,14 +172,16 @@ class CeevoResponseController extends Controller
     }
 
     public function redirectPage($redirection) {
-      // return $this->twig->render('Ceevo::content.redirect', ['redirection' => $redirection]);
-
-      $webstoreHelper = pluginApp(\Plenty\Modules\Helper\Services\WebstoreHelper::class);
-      $webstoreConfig = $webstoreHelper->getCurrentWebstoreConfiguration();
-      $redirection = $webstoreConfig->domainSsl . '/' . $redirection;
       $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', ['redirection' => $redirection]);
+      return $this->twig->render('Ceevo::content.redirect', ['redirection' => $redirection]);
 
-      return $this->response->redirectTo($redirection);
+      // it will redirect the page in iframe
+      // $webstoreHelper = pluginApp(\Plenty\Modules\Helper\Services\WebstoreHelper::class);
+      // $webstoreConfig = $webstoreHelper->getCurrentWebstoreConfiguration();
+      // $redirection = $webstoreConfig->domainSsl . '/' . $redirection;
+      // $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', ['redirection' => $redirection]);
+
+      // return $this->response->redirectTo($redirection);
     }
 
     public function errorMessage($status = 'ERROR') {
