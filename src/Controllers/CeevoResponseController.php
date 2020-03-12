@@ -175,6 +175,7 @@ class CeevoResponseController extends Controller
       // return $this->twig->render('Ceevo::content.redirect', ['redirection' => $redirection]);
 
       $webstoreHelper = pluginApp(\Plenty\Modules\Helper\Services\WebstoreHelper::class);
+      $webstoreConfig = $webstoreHelper->getCurrentWebstoreConfiguration();
       $redirection = $webstoreConfig->domainSsl . '/' . $redirection;
       $this->getLogger(__CLASS__ . '_' . __METHOD__)->info('Ceevo::Logger.infoCaption', ['redirection' => $redirection]);
 
