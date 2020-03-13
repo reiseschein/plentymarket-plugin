@@ -6,6 +6,20 @@
   .ceevo__payment-wedgit {
     padding-top: 0px !important;
   }
+  .ceevo_loading_block {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .ceevo_loading {
+    width: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px;
+    text-align: center;
+
+  }  
 </style>
 </head>
 <body>
@@ -14,7 +28,26 @@
   <input type="hidden" id="session_id" name="session_id">
   <input type="hidden" id="method_code" name="method_code">
 </form>
-<div id="ceevo_widget_loading" style="display:none;">Loading ...</div>
+  <div id="ceevo_loading_block" class="ceevo_widget_loading" style="display:none;">
+    <div class="ceevo_loading">
+      <svg version="1.1" id="layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48.963" height="48.959"  xml:space="preserve">
+        <defs>
+          <linearGradient id="linear-gradient" x1="0.569" y1="0.074" x2="0.066" y2="0.519" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#fff" stop-opacity="0" />
+            <stop offset="1" stop-color="#2ed684" />
+          </linearGradient>
+        </defs>
+        <g id="ic_CEEVO_loading" transform="translate(1108.995 -460.105) rotate(120)">
+          <path id="Subtraction_1" data-name="Subtraction 1" d="M17.92,35.848A17.909,17.909,0,0,1,0,17.924,17.913,17.913,0,0,1,30.59,5.251a17.933,17.933,0,0,1-5.7,29.186A17.762,17.762,0,0,1,17.92,35.848Zm0-30.867a12.942,12.942,0,1,0,9.149,3.79A12.865,12.865,0,0,0,17.92,4.982Z"
+           transform="translate(944.001 679)" fill="#fff" />
+          <path id="Subtraction_3" data-name="Subtraction 3" d="M17.942,35.859A17.935,17.935,0,0,1,5.253,30.6,17.88,17.88,0,0,1,0,17.914H4.983A12.956,12.956,0,1,0,18.939,4.991V0A17.922,17.922,0,0,1,35.88,17.912,17.936,17.936,0,0,1,17.942,35.859Z"
+           transform="translate(937.418 690.38) rotate(-30)" fill="url(#linear-gradient)" />
+        </g>
+        <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s" from="0 0 0" to="360 0 0"
+         repeatCount="indefinite"></animateTransform>
+      </svg>
+    </div>
+  </div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.9.1/jquery.min.js"></script>
 <script src="{{sdkUrl}}/ceevo.js"></script>
 <script type="text/javascript" language="JavaScript">
